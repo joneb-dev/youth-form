@@ -1,10 +1,21 @@
 import React from 'react';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form, Field} from 'formik';
 import logo from './logo.svg';
 import './App.css';
 import './util/custom_fields'
-import {Typography, Button, Container, TextField, makeStyles, Grid, Box} from '@material-ui/core'
+import {Typography, 
+        Button,
+        Container, 
+        TextField, 
+        makeStyles, 
+        Grid, 
+        Select,
+        MenuItem,
+        InputLabel
+      } from '@material-ui/core'
 import {postData} from './util/http_helper' 
+// import {BrowserRouter as Router, Route, Switch, useHistory, withRouter} from 'react-router-dom';
+// import Sucess from './components/sucess'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -27,9 +38,9 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-function App() {
+function App(props) {
+  // let history = useHistory();
   const classes = useStyles();
-
   return (
     <>
     <Formik 
@@ -47,10 +58,10 @@ function App() {
             grade: null,
             school: null,
             invited_by: null,
-            go_to_church: null,
-            church_i_attend: null,
+            go_to_church: '',
+            church_i_attend: '',
             hobbies: null,
-            how_you_heard: null,
+            how_you_heard: '',
             parents_name: null,
             parents_email: null,
             instagram: null,
@@ -63,8 +74,11 @@ function App() {
           },
         }}
         onSubmit={values => {
-          console.log(values);
-          postData(`${process.env.REACT_APP_URL}/api/youth`, 'POST', values)
+          postData(`${process.env.REACT_APP_URL}/youth`, values)
+          console.log('sucess')
+          alert('welcome to youth!')
+          // useHistory.push("/sucess")
+          // history.push('/sucess')
         }}
       >
     <Container component = "main" maxWidth = "xs">
@@ -93,16 +107,19 @@ function App() {
             fullWidth
             as = {TextField}
             autofocus
-            label =  "Last name"
+            label =  "Last Name"
             name = "person.last_name"  />
             </Grid> 
         <Grid item xs = {12}>
         <Field 
           name = "person.birthday"
-          autofocus
           variant="outlined"
+          type="date"
           fullWidth
-          label =  "Birthday"          
+          label =  "Birthday"   
+          InputLabelProps={{
+            shrink: true,
+          }}             
           as = {TextField} />
         </Grid>
         <Grid item xs = {12}>
@@ -113,7 +130,7 @@ function App() {
           fullWidth
           autofocus
           label =  "Street Address"
-          name="person.address" />
+          name="person.street" />
         </Grid>
         <Grid item xs = {12}>
         <Field 
@@ -179,7 +196,7 @@ function App() {
           name="person.school"
           variant="outlined"
           fullWidth
-          autofocus
+          autoFocus
           label =  "School"
           as = {TextField}
           /> 
@@ -194,13 +211,21 @@ function App() {
           as = {TextField} /> 
         </Grid>
         <Grid item xs = {12}>
+        <InputLabel htmlFor="grouped-native-select">What Church do you attend?</InputLabel>
         <Field 
           name="person.go_to_church"
           variant="outlined"
           fullWidth
           autofocus
-          label =  "What Church do you attend"
-          as = {TextField} />
+          as = {Select}
+          // value = 'person.go_to_church'
+          labelId =  "What Church do you attend?"
+        >
+          <MenuItem value = {'Lighthouse Christian Fellowship'}  name="person.go_to_church">Lighthouse Christian Fellowship</MenuItem>
+          <MenuItem as = {MenuItem} value = {"Don't attend chuch"}  name="person.go_to_church">Don't attend chuch</MenuItem>
+          <MenuItem as = {MenuItem} value = {"Other"} name="person.go_to_church">Other</MenuItem>
+        </Field>
+
         </Grid>
         <Grid item xs = {12}>
         <Field 
@@ -208,17 +233,24 @@ function App() {
           variant="outlined"
           fullWidth
           autofocus
-          label =  "Other Church" 
+          label =  "If you attend another church, what is that church?" 
           as = {TextField} /> 
         </Grid>
       <Grid item xs = {12}>
-      <Field 
+      <InputLabel id = "how-you-heard">How did you hear about Elevate Youth Family?</InputLabel>
+      <Field
         name="person.how_you_heard"
         variant="outlined"
         fullWidth
         autofocus
-        label =  "How did you hear about Elevate Youth Family"
-        as = {TextField} /> 
+        as = {Select}
+        labelId =  "how-you-heard"
+      >
+          <MenuItem value = {'Friend'} name="person.how_you_heard">Friend</MenuItem>
+          <MenuItem value = {"Parent"} name="person.how_you_heard">Parent</MenuItem>
+          <MenuItem value = {"Church"} name="person.how_you_heard">Church</MenuItem>
+          <MenuItem value = {"Online"} name="person.how_you_heard">Online</MenuItem>
+      </Field>  
       </Grid>
       <Grid item xs = {12}>
       <Field 
@@ -290,7 +322,7 @@ function App() {
           variant="outlined"
           fullWidth
           autofocus
-          label =  "Facebook"
+          label =  "Facebook Username"
           as = {TextField} /> 
       </Grid>
       <Grid item xs = {12}>
@@ -298,7 +330,12 @@ function App() {
           autofocus
           variant="outlined"
           fullWidth
+          required
           label =  "Today's Date"
+          type = "date"
+          InputLabelProps={{
+            shrink: true,
+          }}      
           name="person.todays_date"
           as = {TextField} /> 
       </Grid>
@@ -317,6 +354,9 @@ function App() {
     </div>
     </Container>
     </Formik>
+      {/* <Route path='/sucess'>
+        <Sucess />
+      </Route> */}
     </>    
   );
 }
