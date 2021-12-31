@@ -1,0 +1,237 @@
+import React from 'react';
+import { Formik, Form, Field} from 'formik';
+import '../../util/custom_fields'
+import {postData} from '../../util/http_helper' 
+import {Typography, 
+  Button,
+  Container, 
+  TextField, 
+  makeStyles, 
+  Grid, 
+  Select,
+  MenuItem,
+  InputLabel
+} from '@material-ui/core'
+import { useHistory } from "react-router-dom";
+
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(3),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  }
+}))
+
+export default function ChurchRegistration(){
+  let history = useHistory();
+  const classes = useStyles();
+  return (
+    <>
+    <Formik 
+      initialValues = {{
+          person: {
+            first_name: null,
+            last_name: null,
+            street: null,
+            city: null,
+            state: null,
+            zip: null,
+            cell:null,
+            email: null,
+            how_you_heard: null,
+            prayer_requests: null,
+            like_to_know_about: null,
+            todays_date: null,
+          },
+        }}
+        onSubmit={async values => {
+          postData(`${process.env.REACT_APP_URL}/church`, values)
+          console.log('sucess')
+          alert('welcome to youth!')
+          history.push('/sucess')
+        }}
+      >
+    <Container component = "main" maxWidth = "xs">
+    <div className={classes.paper}>
+
+    <Typography component="h1" variant="h5">
+        Church Registration
+    </Typography>
+
+    <Form className = {classes.form}>
+      <Grid container spacing = {2}>
+        <Grid item xs = {12} sm = {6}> 
+          <Field 
+            required = {true}
+            variant="outlined"
+            fullWidth
+            as = {TextField}
+            autoFocus
+            label =  "First Name"
+            name = "person.first_name"  /> 
+          </Grid>
+          <Grid item xs = {12} sm = {6}>  
+          <Field 
+            required = {true}
+            variant="outlined"
+            fullWidth
+            as = {TextField}
+            label =  "Last Name"
+            name = "person.last_name"  />
+            </Grid>
+        <Grid item xs = {12}>
+        <Field 
+          required = {true}
+          as = {TextField}
+          variant="outlined"
+          fullWidth
+          label =  "Street Address"
+          name="person.street" />
+        </Grid>
+        <Grid item xs = {12}>
+        <Field 
+          required = {true}
+          as = {TextField}
+          variant="outlined"
+          fullWidth
+          label =  "City"
+          name="person.city" />
+        </Grid>
+        <Grid item xs = {12}>
+        <Field 
+          required = {true}
+          as = {TextField}
+          variant="outlined"
+          fullWidth
+          label =  "State"
+          name="person.state" />
+        </Grid>
+        <Grid item xs = {12}>
+        <Field 
+          required = {true}
+          as = {TextField}
+          variant="outlined"
+          fullWidth
+          
+          label =  "Zipcode"
+          name="person.zip" /> 
+        </Grid>
+        
+        <Grid item xs = {12}>
+        <Field 
+          name="person.cell"
+          label =  "Cellphone Number"
+          variant="outlined"
+          fullWidth
+          as = {TextField} /> 
+        </Grid>        
+        <Grid item xs = {12}>
+        <Field 
+          name="person.email"
+          variant="outlined"
+          fullWidth
+          label =  "Email"
+          as = {TextField} />
+        </Grid>
+        <Grid item xs = {12}>
+        <Field 
+          variant="outlined"
+          fullWidth
+          required
+          label =  "Today's Date"
+          type = "date"
+          InputLabelProps={{
+            shrink: true,
+          }}      
+          name="person.todays_date"
+          as = {TextField} /> 
+      </Grid>
+      <Grid item xs = {12}>
+        <Field
+          variant="outlined"
+          fullWidth
+          label =  "Prayer Requests?" 
+          name="person.prayer_requests"
+          as = {TextField} /> 
+      </Grid>
+      <Grid item xs = {12}>
+          <div> What are you interested in? </div>
+          <InputLabel>
+            <Field type="checkbox" name="person.like_to_know_about" value="The Christian Faith" />
+            The Christian Faith
+          </InputLabel>
+          <InputLabel>
+            <Field type="checkbox" name="person.like_to_know_about" value="Being Baptized" />
+            Being Baptized
+          </InputLabel>
+          <InputLabel>
+            <Field type="checkbox" name="person.like_to_know_about" value="Becoming a Member" />
+            Becoming a Member
+          </InputLabel>
+          <InputLabel>
+            <Field type="checkbox" name="person.like_to_know_about" value="Sunday School Classes" />
+            Sunday School Classes
+          </InputLabel>
+          <InputLabel>
+            <Field type="checkbox" name="person.like_to_know_about" value="Small Groups" />
+            Small Groups
+          </InputLabel>
+          <InputLabel>
+            <Field type="checkbox" name="person.like_to_know_about" value="Youth" />
+            Youth
+          </InputLabel>
+          <InputLabel>
+            <Field type="checkbox" name="person.like_to_know_about" value="Boys Clubs" />
+            Boys Clubs
+          </InputLabel>
+          <InputLabel>
+            <Field type="checkbox" name="person.like_to_know_about" value="Girls Clubs" />
+            Girls Clubs
+          </InputLabel>
+          <InputLabel>
+            <Field type="checkbox" name="person.like_to_know_about" value="Women's and Men's Groups" />
+            Women's and Men's Groups
+          </InputLabel>
+          <InputLabel>
+            <Field type="checkbox" name="person.like_to_know_about" value="Sound Room" />
+            Sound Room
+          </InputLabel>
+          <InputLabel>
+            <Field type="checkbox" name="person.like_to_know_about" value="Children's Church" />
+            Children's Church
+          </InputLabel>
+          <InputLabel>
+            <Field type="checkbox" name="person.like_to_know_about" value="Hospitality (Greeters)" />
+            Hospitality (Greeters)
+          </InputLabel>
+          <InputLabel>
+            <Field type="checkbox" name="person.like_to_know_about" value="Food Pantry" />
+            Food Pantry
+          </InputLabel>
+          <InputLabel>
+            <Field type="checkbox" name="person.like_to_know_about" value="Young Adults" />
+            Young Adults
+          </InputLabel>
+      </Grid>
+      </Grid>
+        <Button type="submit">Submit</Button>
+    </Form>
+    </div>
+    </Container>
+    </Formik>
+    </>    
+  )  
+}

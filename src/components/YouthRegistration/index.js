@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field} from 'formik';
-import '../util/custom_fields'
-import {postData} from '../util/http_helper' 
+import '../../util/custom_fields'
+import {postData} from '../../util/http_helper' 
 import {Typography, 
   Button,
   Container, 
@@ -12,6 +12,7 @@ import {Typography,
   MenuItem,
   InputLabel
 } from '@material-ui/core'
+import { useHistory } from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export default function YouthRegistration(){
-  // let history = useHistory();
+  let history = useHistory();
   const classes = useStyles();
   return (
     <>
@@ -70,18 +71,17 @@ export default function YouthRegistration(){
           },
         }}
         onSubmit={values => {
-          postData(`${process.env.REACT_APP_URL}/youth`, values)
+          // postData(`${process.env.REACT_APP_URL}/youth`, values)
           console.log('sucess')
           alert('welcome to youth!')
-          // useHistory.push("/sucess")
-          // history.push('/sucess')
+          history.push('/sucess')
         }}
       >
     <Container component = "main" maxWidth = "xs">
     <div className={classes.paper}>
 
     <Typography component="h1" variant="h5">
-        Church Registration
+        Youth Registration
     </Typography>
 
     <Form className = {classes.form}>
@@ -92,20 +92,19 @@ export default function YouthRegistration(){
             variant="outlined"
             fullWidth
             as = {TextField}
-            autofocus
+            autoFocus
             label =  "First Name"
             name = "person.first_name"  /> 
-          </Grid>
+        </Grid>
           <Grid item xs = {12} sm = {6}>  
           <Field 
             required = {true}
             variant="outlined"
             fullWidth
             as = {TextField}
-            autofocus
             label =  "Last Name"
             name = "person.last_name"  />
-            </Grid> 
+          </Grid> 
         <Grid item xs = {12}>
         <Field 
           name = "person.birthday"
@@ -124,7 +123,6 @@ export default function YouthRegistration(){
           as = {TextField}
           variant="outlined"
           fullWidth
-          autofocus
           label =  "Street Address"
           name="person.street" />
         </Grid>
@@ -132,7 +130,6 @@ export default function YouthRegistration(){
         <Field 
           required = {true}
           as = {TextField}
-          autofocus
           variant="outlined"
           fullWidth
           label =  "City"
@@ -144,7 +141,6 @@ export default function YouthRegistration(){
           as = {TextField}
           variant="outlined"
           fullWidth
-          autofocus
           label =  "State"
           name="person.state" />
         </Grid>
@@ -154,7 +150,6 @@ export default function YouthRegistration(){
           as = {TextField}
           variant="outlined"
           fullWidth
-          autofocus
           label =  "Zipcode"
           name="person.zip" /> 
         </Grid>
@@ -162,7 +157,6 @@ export default function YouthRegistration(){
         <Grid item xs = {12}>
         <Field 
           name="person.cell"
-          autofocus
           label =  "Cellphone Number"
           variant="outlined"
           fullWidth
@@ -171,7 +165,6 @@ export default function YouthRegistration(){
         <Grid item xs = {12}>
         <Field 
           name="person.email"
-          autofocus
           variant="outlined"
           fullWidth
           label =  "Personal Email"
@@ -183,7 +176,6 @@ export default function YouthRegistration(){
           as = {TextField}
           variant="outlined"
           fullWidth
-          autofocus
           label =  "Grade"
           name="person.grade" /> 
         </Grid>
@@ -192,7 +184,6 @@ export default function YouthRegistration(){
           name="person.school"
           variant="outlined"
           fullWidth
-          autoFocus
           label =  "School"
           as = {TextField}
           /> 
@@ -202,19 +193,18 @@ export default function YouthRegistration(){
           name="person.invited_by"
           variant="outlined"
           fullWidth
-          autofocus
           label =  "Invited by"
           as = {TextField} /> 
         </Grid>
         <Grid item xs = {12}>
-        <InputLabel htmlFor="grouped-native-select">What Church do you attend?</InputLabel>
+        <InputLabel htmlFor="grouped-native-select">
+          What Church do you attend?
+        </InputLabel>
         <Field 
           name="person.go_to_church"
           variant="outlined"
           fullWidth
-          autofocus
           as = {Select}
-          // value = 'person.go_to_church'
           labelId =  "What Church do you attend?"
         >
           <MenuItem value = {'Lighthouse Christian Fellowship'}  name="person.go_to_church">Lighthouse Christian Fellowship</MenuItem>
@@ -228,7 +218,6 @@ export default function YouthRegistration(){
           name="person.church_i_attend"
           variant="outlined"
           fullWidth
-          autofocus
           label =  "If you attend another church, what is that church?" 
           as = {TextField} /> 
         </Grid>
@@ -238,7 +227,6 @@ export default function YouthRegistration(){
         name="person.how_you_heard"
         variant="outlined"
         fullWidth
-        autofocus
         as = {Select}
         labelId =  "how-you-heard"
       >
@@ -253,7 +241,6 @@ export default function YouthRegistration(){
           name="person.hobbies"
           variant="outlined"
           fullWidth
-          autofocus
           label =  "Hobbies"
           as = {TextField} /> 
       </Grid>
@@ -262,7 +249,6 @@ export default function YouthRegistration(){
           name="person.parents_name"
           variant="outlined"
           fullWidth
-          autofocus
           label =  "Parent's Name"
           as = {TextField}
         /> 
@@ -272,13 +258,11 @@ export default function YouthRegistration(){
           name="person.parents_email"
           variant="outlined"
           fullWidth
-          autofocus
           label =  "Parent's Email"
           as = {TextField} /> 
       </Grid>
       <Grid item xs = {12}>
         <Field 
-          autofocus
           variant="outlined"
           fullWidth
           label =  "Instagram Username"
@@ -290,7 +274,6 @@ export default function YouthRegistration(){
           name="person.twitter"
           variant="outlined"
           fullWidth
-          autofocus
           label =  "Twitter Username"
           as = {TextField} />
       </Grid>
@@ -299,7 +282,6 @@ export default function YouthRegistration(){
           name="person.snapchat"
           variant="outlined"
           fullWidth
-          autofocus
           label =  "Snapchat Username"
           as = {TextField} /> 
       </Grid>
@@ -308,7 +290,6 @@ export default function YouthRegistration(){
           name="person.tiktok"
           variant="outlined"
           fullWidth
-          autofocus
           label =  "Tiktok Username"
           as = {TextField} /> 
       </Grid>
@@ -317,13 +298,11 @@ export default function YouthRegistration(){
           name="person.facebook"
           variant="outlined"
           fullWidth
-          autofocus
           label =  "Facebook Username"
           as = {TextField} /> 
       </Grid>
       <Grid item xs = {12}>
         <Field 
-          autofocus
           variant="outlined"
           fullWidth
           required
@@ -337,7 +316,6 @@ export default function YouthRegistration(){
       </Grid>
       <Grid item xs = {12}>
         <Field
-          autofocus
           variant="outlined"
           fullWidth
           label =  "Prayer Requests?" 
@@ -345,7 +323,7 @@ export default function YouthRegistration(){
           as = {TextField} /> 
         </Grid>
         <Button type="submit">Submit</Button>
-    </Grid>
+      </Grid>
     </Form>
     </div>
     </Container>
