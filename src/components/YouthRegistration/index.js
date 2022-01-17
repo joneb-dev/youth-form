@@ -18,17 +18,28 @@ import { useHistory } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
+    marginBottom: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    // maxWidth: "75%"
+    backgroundColor: 'white',
+    boxShadow: '1px 1px 5px grey'
+  },
+  header: {
+    marginTop: theme.spacing(8),
+    marginBottom: theme.spacing(8),
   },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
+    width: '75%', // Fix IE 11 issue.
+    marginTop: theme.spacing(4),
+  },
+  p: {
+    margin: theme.spacing(4),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -77,14 +88,20 @@ export default function YouthRegistration(){
           history.push('/sucess')
         }}
       >
-    <Container component = "main" maxWidth = "xs">
+    <Container component = "main" maxWidth = "md">
     <div className={classes.paper}>
 
-    <Typography component="h1" variant="h5">
-        Youth Registration
-    </Typography>
-
     <Form className = {classes.form}>
+      <Typography component="h1" variant="h3">
+          Youth Registration
+      </Typography>
+      <p>
+        Hey, Thanks for coming out to Elevate Youth! 
+        We're excited to have you. 
+        Please fill out this form so we can get you signed in, 
+        and you'll get a voucher for a free snack afterward. 
+        We hope you have an awesome time.
+      </p>
       <Grid container spacing = {2}>
         <Grid item xs = {12} sm = {6}> 
           <Field 

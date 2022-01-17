@@ -2,7 +2,8 @@ import React from 'react';
 import { Formik, Form, Field} from 'formik';
 import '../../util/custom_fields'
 import {postData} from '../../util/http_helper' 
-import {Typography, 
+import {
+  Typography, 
   Button,
   Container, 
   TextField, 
@@ -10,7 +11,7 @@ import {Typography,
   Grid, 
   Select,
   MenuItem,
-  InputLabel
+  InputLabel,
 } from '@material-ui/core'
 import { useHistory } from "react-router-dom";
 
@@ -18,20 +19,32 @@ import { useHistory } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
+    marginBottom: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    backgroundColor: 'white',
+    boxShadow: '1px 1px 5px grey'
+  },
+  header: {
+    marginTop: theme.spacing(8),
+    marginBottom: theme.spacing(8),
   },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
+    width: '75%', // Fix IE 11 issue.
+    marginTop: theme.spacing(4),
+    marginBottom: theme.spacing(4),
+  },
+  p: {
+    margin: theme.spacing(4),
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
+    marginTop: theme.spacing(4),
+    marginBottom: theme.spacing(4),
   }
 }))
 
@@ -64,14 +77,19 @@ export default function ChurchRegistration(){
           history.push('/sucess')
         }}
       >
-    <Container component = "main" maxWidth = "xs">
+    <Container component = "main" maxWidth = "md">
     <div className={classes.paper}>
 
-    <Typography component="h1" variant="h5">
-        Church Registration
-    </Typography>
-
     <Form className = {classes.form}>
+      <Typography className='header' component="h1" variant="h3" >
+          Church Registration
+      </Typography> 
+      <p>
+        Thank you so much for joining us at Lighthouse Christian Fellowship! 
+        To enable us to thank you for coming and to connect with you better, 
+        please fill out as much of this form as you are comfortable with. 
+        We hope that you hear Jesus calling you as we gather today. God bless!
+      </p>
       <Grid container spacing = {2}>
         <Grid item xs = {12} sm = {6}> 
           <Field 
@@ -225,10 +243,12 @@ export default function ChurchRegistration(){
             <Field type="checkbox" name="person.like_to_know_about" value="Young Adults" />
             Young Adults
           </InputLabel>
+
       </Grid>
       </Grid>
-        <Button type="submit">Submit</Button>
     </Form>
+    <Button type="submit">Submit</Button>
+
     </div>
     </Container>
     </Formik>
