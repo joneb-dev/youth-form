@@ -21,3 +21,4 @@ jobs:
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           CI: ${{ secrets.CI }}
+          REACT_APP_URL: ${{ secrets.REACT_APP_URL }}
