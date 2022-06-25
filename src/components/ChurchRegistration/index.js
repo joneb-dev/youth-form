@@ -9,13 +9,11 @@ import {
   TextField, 
   makeStyles, 
   Grid, 
-  Select,
-  MenuItem,
   InputLabel,
 } from '@material-ui/core'
 import { useHistory } from "react-router-dom";
 
-
+// TODO: Export this out into its own file
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),

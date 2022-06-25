@@ -14,7 +14,7 @@ import {Typography,
 } from '@material-ui/core'
 import { useHistory } from "react-router-dom";
 
-
+// TODO: Export this out into its own file
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -22,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    // maxWidth: "75%"
     backgroundColor: 'white',
     boxShadow: '1px 1px 5px grey'
   },
@@ -37,13 +36,16 @@ const useStyles = makeStyles((theme) => ({
   form: {
     width: '75%', // Fix IE 11 issue.
     marginTop: theme.spacing(4),
+    marginBottom: theme.spacing(4),
   },
   p: {
     margin: theme.spacing(4),
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
-  }
+    marginTop: theme.spacing(4),
+    marginBottom: theme.spacing(4),
+    backgroundColor: 'grey'
+  },
 }))
 
 export default function YouthRegistration(){
@@ -95,7 +97,7 @@ export default function YouthRegistration(){
           Youth Registration
       </Typography>
       <p>
-        Hey, Thanks for coming out to Elevate Youth! 
+        Hey, Thanks for coming out to Elevate Youth Family! 
         We're excited to have you. 
         Please fill out this form so we can get you signed in, 
         and you'll get a voucher for a free snack afterward. 
