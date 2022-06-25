@@ -15,7 +15,7 @@ import {
 } from '@material-ui/core'
 import { useHistory } from "react-router-dom";
 
-
+// TODO: Export this out into its own file
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
