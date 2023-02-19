@@ -3,15 +3,7 @@ import {Link,} from "react-router-dom";
 import BasicCard from '../Card'
 
 import {
-  Typography, 
-  Button,
   Container, 
-  TextField, 
-  makeStyles, 
-  Grid, 
-  Select,
-  MenuItem,
-  InputLabel,
 } from '@material-ui/core'
 
 export default function Footer() {
