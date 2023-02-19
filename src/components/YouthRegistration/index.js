@@ -97,7 +97,7 @@ export default function YouthRegistration(){
           Youth Registration
       </Typography>
       <p>
-        Hey, Thanks for coming out to Elevate Youth! 
+        Hey, Thanks for coming out to Elevate Youth Family! 
         We're excited to have you. 
         Please fill out this form so we can get you signed in, 
         and you'll get a voucher for a free snack afterward. 
