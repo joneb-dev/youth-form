@@ -6,8 +6,9 @@ import {
   Route,
   Switch,
 } from "react-router-dom";
-import YouthRegistration from "./components/YouthRegistration";
-import ChurchRegistration from "./components/ChurchRegistration";
+import YouthRegistration from "./components/YouthRegistration/YouthRegistration.component";
+import ChurchRegistration from "./components/ChurchRegistration/ChurchRegistration.component";
+import ChildrensRegistration from "./components/ChildrensRegistration/ChildrensRegistration.component"
 import Sucess from "./components/Sucess";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
@@ -20,6 +21,7 @@ function App() {
           <Switch>
             <Route path="/youth" exact component={YouthRegistration} />
             <Route path="/church" exact component={ChurchRegistration} />
+            <Route path="/children" exact component={ChildrensRegistration} />
             <Route path="/sucess">
               <Sucess />
             </Route>

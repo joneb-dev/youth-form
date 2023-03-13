@@ -18,6 +18,10 @@ export default function Footer() {
           <BasicCard name='Church Registration'>
           </BasicCard>
         </Link>
+        <Link to="/children">
+          <BasicCard name="Children's Church Registration">
+          </BasicCard>
+        </Link>
       </Container>
     </>
     );
