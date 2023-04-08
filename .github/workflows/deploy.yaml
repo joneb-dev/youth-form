@@ -16,6 +16,7 @@ jobs:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           CI: ${{ secrets.CI }}
           REACT_APP_URL: ${{ secrets.REACT_APP_URL }}
+          SKIP_PREFLIGHT_CHECK: true
       - uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting
